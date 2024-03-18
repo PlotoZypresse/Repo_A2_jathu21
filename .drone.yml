@@ -1,0 +1,187 @@
+---
+kind: pipeline
+name: A2
+
+clone:
+  disable: true
+
+steps:
+- name: clone
+  image: localhost:5000/plugins/git-user
+
+- name: check
+  image: localhost:5000/comparch
+  commands:
+  - python3 /compArch/check.py
+  depends_on:
+  - clone
+
+- name: src
+  image: localhost:5000/comparch
+  commands:
+  - python3 /compArch/test_A2_src.py
+  depends_on:
+  - check
+
+- name: Own build, build
+  image: localhost:5000/comparch
+  commands:
+  - python3 /compArch/test_A2_own.py
+  depends_on:
+  - src
+
+- name: Own build, test 1
+  image: localhost:5000/comparch
+  commands:
+  - python3 /compArch/test_A2_own.py 1
+  depends_on:
+  - Own build, build
+
+- name: Own build, test 2
+  image: localhost:5000/comparch
+  commands:
+  - python3 /compArch/test_A2_own.py 2
+  depends_on:
+  - Own build, build
+
+- name: Own build, test 3
+  image: localhost:5000/comparch
+  commands:
+  - python3 /compArch/test_A2_own.py 3
+  depends_on:
+  - Own build, build
+
+- name: Own build, test 4
+  image: localhost:5000/comparch
+  commands:
+  - python3 /compArch/test_A2_own.py 4
+  depends_on:
+  - Own build, build
+
+- name: Own build, test 5
+  image: localhost:5000/comparch
+  commands:
+  - python3 /compArch/test_A2_own.py 5
+  depends_on:
+  - Own build, build
+
+- name: Own build, test 6
+  image: localhost:5000/comparch
+  commands:
+  - python3 /compArch/test_A2_own.py 6
+  depends_on:
+  - Own build, build
+
+- name: Own build, test 7
+  image: localhost:5000/comparch
+  commands:
+  - python3 /compArch/test_A2_own.py 7
+  depends_on:
+  - Own build, build
+
+- name: Own build, test 8
+  image: localhost:5000/comparch
+  commands:
+  - python3 /compArch/test_A2_own.py 8
+  depends_on:
+  - Own build, build
+
+- name: Own build, test 9
+  image: localhost:5000/comparch
+  commands:
+  - python3 /compArch/test_A2_own.py 9
+  depends_on:
+  - Own build, build
+
+- name: Own build, test 10
+  image: localhost:5000/comparch
+  commands:
+  - python3 /compArch/test_A2_own.py 10
+  depends_on:
+  - Own build, build
+
+
+- name: Our build, build
+  image: localhost:5000/comparch
+  commands:
+  - python3 /compArch/test_A2_our.py
+  depends_on:
+  - src
+
+- name: Our build, test 1
+  image: localhost:5000/comparch
+  commands:
+  - python3 /compArch/test_A2_our.py 1
+  depends_on:
+  - Our build, build
+
+- name: Our build, test 2
+  image: localhost:5000/comparch
+  commands:
+  - python3 /compArch/test_A2_our.py 2
+  depends_on:
+  - Our build, build
+
+- name: Our build, test 3
+  image: localhost:5000/comparch
+  commands:
+  - python3 /compArch/test_A2_our.py 3
+  depends_on:
+  - Our build, build
+
+- name: Our build, test 4
+  image: localhost:5000/comparch
+  commands:
+  - python3 /compArch/test_A2_our.py 4
+  depends_on:
+  - Our build, build
+
+- name: Our build, test 5
+  image: localhost:5000/comparch
+  commands:
+  - python3 /compArch/test_A2_our.py 5
+  depends_on:
+  - Our build, build
+
+- name: Our build, test 6
+  image: localhost:5000/comparch
+  commands:
+  - python3 /compArch/test_A2_our.py 6
+  depends_on:
+  - Our build, build
+
+- name: Our build, test 7
+  image: localhost:5000/comparch
+  commands:
+  - python3 /compArch/test_A2_our.py 7
+  depends_on:
+  - Our build, build
+
+- name: Our build, test 8
+  image: localhost:5000/comparch
+  commands:
+  - python3 /compArch/test_A2_our.py 8
+  depends_on:
+  - Our build, build
+
+- name: Our build, test 9
+  image: localhost:5000/comparch
+  commands:
+  - python3 /compArch/test_A2_our.py 9
+  depends_on:
+  - Our build, build
+
+- name: Our build, test 10
+  image: localhost:5000/comparch
+  commands:
+  - python3 /compArch/test_A2_our.py 10
+  depends_on:
+  - Our build, build
+
+- name: Header Check
+  image: localhost:5000/comparch
+  commands:
+  - python3 /compArch/test_A2_header.py
+  depends_on:
+  - src
+
