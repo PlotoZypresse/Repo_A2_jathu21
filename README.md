@@ -1,1 +1,1 @@
-# Repo_A2_jathu21
+# C project from Computer Architecture
